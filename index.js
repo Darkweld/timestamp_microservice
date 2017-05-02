@@ -13,10 +13,12 @@ app.get('/:value', function(req, res) {
   var date;
   if (isNaN(req.params.value) === true) {
     date = Date(req.params.value.toString());
-    res.end(date);
-    }
+    res.write(date);
+    } else {
     date = Date(req.params.value);
-  res.end(date);
+  res.write(date);
+    }
+    res.end();
 });
 
 app.listen(app.get('port'), function() {
