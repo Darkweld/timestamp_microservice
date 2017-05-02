@@ -10,7 +10,13 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/:value', function(req, res) {
-  res.end(req.params.value);
+  var date;
+  if (isNaN(req.params.value) === true) {
+    date = Date(req.params.value.toString());
+    res.end(date);
+    }
+    date = Date(req.params.value);
+  res.end(date);
 });
 
 app.listen(app.get('port'), function() {
