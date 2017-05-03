@@ -5,27 +5,30 @@ app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
 
-// views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+
+app.get('/', function(req, res) {
+  res.render("pages/index");
+});
 app.get('/:value', function(req, res) {
   var str = req.params.value;
   var date;
   var d = new Date(str);
+  var obj = {unixtime: null, natural: null};
   if (isNaN(Number(str)) === false) {
     date = new Date(Number(str));
-    res.end("Unixtime:" + date.toString() 
-    + "<br> Natural language format date:" 
-    + date.toDateString());
+    obj.unixtime = date.getTime();
+    obj.natural = date.toDateString();
   } else if (isNaN(d.getTime()) === false) {
     date = new Date(d.getTime());
-    res.end("Unixtime:" + d.getTime().toString() 
-    + "<br> Natural language format date:" 
-    + date.toDateString());
+    obj.unixtime = d.getTime();
+    obj.natural = date.toDateString();
   }
-
-    res.end("Unixtime:" + null + "<br> Natural language format date:" + null);
+    
+    res.render("pages/data", {obj:obj});
+    res.end();
 });
 
 app.listen(app.get('port'), function() {
