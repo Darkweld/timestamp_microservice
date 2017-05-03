@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
+  "name": "FreeCodeCamp_Timestamp_Microservice",
   "version": "0.2.6",
-  "description": "A sample Node.js app using Express 4",
+  "description": "Timestamp microservice for FreeCodeCamp",
   "engines": {
     "node": "6.10.2"
   },
@@ -15,12 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/Darkweld/timestamp_microservice"
   },
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "express",
+    "FreeCodeCamp"
   ],
   "license": "MIT"
 }
